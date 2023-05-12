@@ -1,0 +1,14 @@
+app-content {
+  display: block;
+  position: relative;
+  min-height: var(--nav-height);
+  z-index: 20;
+}
+app-footer {
+  display: block;
+  position: sticky;
+  bottom: 0;
+  height: var(--footer-height);
+  background: black;
+  z-index: 10;
+}

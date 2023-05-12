@@ -1,0 +1,23 @@
+<ng-container *ngIf="(styling | async) as styleObs">
+  <nav [style.background-color]="styleObs.backgroundColor">
+    <anibere-logo></anibere-logo>
+    <div id="links">
+      <a class="link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <h4>Home</h4>
+      </a>
+      <a class="link" routerLink="booking" routerLinkActive="active">
+        <h4>Book</h4>
+      </a>
+      <a class="link" routerLink="store" routerLinkActive="active">
+        <h4>Store</h4>
+      </a>
+      <a class="link" routerLink="about" routerLinkActive="active">
+        <h4>About</h4>
+      </a>
+    </div>
+    <div id="userSpecific">
+      <a id="joinLink">join us!</a>
+      <a id="loginLink">log in</a>
+    </div>
+  </nav>
+</ng-container>

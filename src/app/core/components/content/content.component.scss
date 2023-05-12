@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+.navPadding {
+  padding: var(--nav-height) 0 0;
+}
+#navPadding {
+  display: flex;
+  justify-content: center;
+}
+#contentArea {
+  width: clamp(992px, 100%, 1920px);
+}

@@ -1,0 +1,22 @@
+nav, #links, #userSpecific {
+  display: flex;
+}
+anibere-logo {
+  height: 100%;
+}
+nav {
+  height: 100%;
+  padding: 15px 50px;
+  justify-content: space-between;
+}
+#links {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.link {
+  padding: 0 10px;
+}
+.link.active * {
+  color: red;
+}
