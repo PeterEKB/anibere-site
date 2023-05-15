@@ -1,6 +1,10 @@
 :host {
-  background-color: var(--neutral-gray);
+  display: block;
+  position: relative;
   min-width: max-content;
+  height: 100%;
+  background-color: var(--neutral-gray);
+  overflow-y: overlay;
 }
 #navPadding {
   height: 100%;

@@ -46,6 +46,13 @@ video {
 #banner-Akwaaba {
   animation: SlideToLeft 8s linear infinite;
 }
+#foreground {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 @keyframes SlideToLeft {
   0% {
     opacity: 0;

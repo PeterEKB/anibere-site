@@ -18,7 +18,7 @@ import { LogoComponent } from './core/components/logo/logo.component';
     ContentComponent,
     TemplateComponent,
     BodyComponent,
-    LogoComponent
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
