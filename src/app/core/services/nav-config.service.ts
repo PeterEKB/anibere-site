@@ -9,6 +9,7 @@ export class NavConfigService {
   private defaultStyling: NavConfigStyle = {
     backgroundColor: '#fff',
     overlay: false,
+    raise: false,
   };
   private style: BehaviorSubject<NavConfigStyle> = new BehaviorSubject(
     this.defaultStyling
@@ -22,6 +23,10 @@ export class NavConfigService {
     this.style.next({ ...this.style.value, backgroundColor: color });
   }
   setOverlay(overlay: boolean) {
-    this.style.next({ ...this.style.value, overlay: overlay });
+    this.style.next({ ...this.style.value, overlay });
+  }
+  setRaise(raise: boolean) {
+    this.style.next({ ...this.style.value, raise });
+  
   }
 }

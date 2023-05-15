@@ -1,22 +1,35 @@
-nav, #links, #userSpecific {
+nav {
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem 3rem;
+  box-sizing: border-box;
+}
+#links, #userSpecific {
   display: flex;
 }
 anibere-logo {
   height: 100%;
-}
-nav {
-  height: 100%;
-  padding: 15px 50px;
-  justify-content: space-between;
 }
 #links {
   justify-content: center;
   flex-wrap: wrap;
   align-content: center;
 }
-.link {
-  padding: 0 10px;
+.link * {
+  padding: .8rem;
+  transition: color 150ms;
+}
+.link:hover *:not(.link.active *) {
+  color: white;
+  text-shadow: 0 0 2px black;
 }
 .link.active * {
   color: red;
+  cursor: default;
+}
+#userSpecific {
+  justify-self: right;
+  align-self: center;
 }

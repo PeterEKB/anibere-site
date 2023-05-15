@@ -1,4 +1,9 @@
 :host {
-  display: block;
+  display: contents;
+}
+app-banner, .hi {
+  height: 100%;
+}
+.hi {
   background-color: red;
 }
