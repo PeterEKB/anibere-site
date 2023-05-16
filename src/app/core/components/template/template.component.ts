@@ -1,7 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
-import { BodyComponent } from '../body/body.component';
+import { Component } from '@angular/core';
 import { Scroll } from '../../models/scroll';
+import { BodyService } from '../../services/body.service';
 
 @Component({
   selector: 'app-template',
@@ -10,11 +9,10 @@ import { Scroll } from '../../models/scroll';
 })
 export class TemplateComponent {
   scrollShape: string = 'scrollSquareTop';
-  @ViewChild('body') private scrollContainer!: BodyComponent;
 
-  constructor() {}
+  constructor(private s_body: BodyService) {}
   ngAfterViewInit() {
-    this.scrollContainer.scrollPosition.subscribe((position: Scroll) => {
+    this.s_body.scrollPosition$.subscribe((position: Scroll) => {
       if (position.top) {
         this.scrollShape = 'scrollSquareTop';
       } else if (position.bottom) {

@@ -11,10 +11,7 @@ import { BodyService } from '../../services/body.service';
 })
 export class BodyComponent {
   private notifier$: Subject<null> = new Subject();
-  private _scrollInfo: Scroll = {
-    position: {
-      x: 0,
-
+  private _scrollInfo!: Scroll;
   public isPadded!: boolean;
 
   constructor(private s_body: BodyService, private s_nav: NavConfigService, private elementRef: ElementRef) {
