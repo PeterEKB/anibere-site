@@ -9,6 +9,8 @@
 <div id="foreground">
   <app-button id="bAA" class="ace--center">Book An Appointment</app-button>
   <div id="miniCalendar">
-    <ng-content *ngFor="let day of weekdaysArray"></ng-content>
+    <ng-container *ngFor="let day of weekdaysArray">
+      <app-card></app-card>
+    </ng-container>
   </div>
 </div>

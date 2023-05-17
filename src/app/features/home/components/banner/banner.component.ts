@@ -8,62 +8,65 @@ import { Weekdays } from 'src/app/core/models/weekdays';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent {
-  weekdays:Weekdays = {
+  weekdays: Weekdays = {
     sunday: {
       day: 'sunday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     monday: {
-      day: 'sunday',
+      day: 'monday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     tuesday: {
-      day: 'sunday',
+      day: 'tuesday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     wednesday: {
-      day: 'sunday',
+      day: 'wednesday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     thursday: {
-      day: 'sunday',
+      day: 'thursday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     friday: {
-      day: 'sunday',
+      day: 'friday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
     saturday: {
-      day: 'sunday',
+      day: 'saturday',
       name: {
-      male: 'afua',
-      female: 'fdasf',}
+        male: 'afua',
+        female: 'fdasf',
+      },
     },
   };
-  weekdaysArray: any = [...Object.keys(this.weekdays)];
+  weekdaysArray: any = this._weedaysArray;
 
-  ngAfterViewInit() {
-    console.log(this._weedaysArray());
-  }
+  ngAfterViewInit() {}
 
-  private _weedaysArray() {
-    let formattedArray: any = {};
-
-    Object.keys(this.weekdays).forEach((element, index, arr) => {
-      formattedArray[element] = arr[index]
-    });
-    return formattedArray
+  private get _weedaysArray() {
+    return Object.entries(this.weekdays).map(([key, value]) => ({
+      key,
+      ...value,
+    }));
   }
 }
