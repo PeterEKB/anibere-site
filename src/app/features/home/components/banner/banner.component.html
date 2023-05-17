@@ -8,4 +8,7 @@
 <div id="banner-Akwaaba" class="banner-Bg-Text ace--center">Akwaaba</div>
 <div id="foreground">
   <app-button id="bAA" class="ace--center">Book An Appointment</app-button>
+  <div id="miniCalendar">
+    <ng-content *ngFor="let day of weekdaysArray"></ng-content>
+  </div>
 </div>
