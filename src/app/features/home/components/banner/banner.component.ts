@@ -1,5 +1,6 @@
 import { WeekDay } from '@angular/common';
 import { Component } from '@angular/core';
+import { ButtonMetaData } from 'src/app/core/models/button-meta-data';
 import { Weekdays } from 'src/app/core/models/weekdays';
 
 @Component({
@@ -8,6 +9,10 @@ import { Weekdays } from 'src/app/core/models/weekdays';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent {
+  cTAData: ButtonMetaData = {
+    type: 'rounded',
+    route: 'store',
+  }
   weekdays: Weekdays = {
     sunday: {
       day: 'sunday',

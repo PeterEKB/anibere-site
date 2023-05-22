@@ -7,7 +7,7 @@
 <div id="banner-Welcome" class="banner-Bg-Text ace--center"><b>|</b>Welcome</div>
 <div id="banner-Akwaaba" class="banner-Bg-Text ace--center">Akwaaba</div>
 <div id="foreground">
-  <app-button id="bAA" class="ace--center">Book An Appointment</app-button>
+  <app-button id="bAA" [metaData]=cTAData class="ace--center">{{'book an appointment'|titlecase}}</app-button>
   <div id="bookTheLookCon" class="ace--center" reveal>
     <a class="link" routerLink="store" routerLinkActive="active">
       <div id="bookTheLookText">
@@ -16,7 +16,7 @@
     </a>
     <div id="miniCalendar">
       <ng-container *ngFor="let day of weekdaysArray">
-        <app-card reveal></app-card>
+        <app-card></app-card>
       </ng-container>
     </div>
   </div>
