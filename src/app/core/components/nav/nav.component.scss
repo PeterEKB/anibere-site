@@ -1,12 +1,27 @@
+:host {
+  display: block;
+  transition-duration: 0.3s;
+}
+:host(.transparent) nav {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+:host(.raise) {
+  transform: translateY(-50px);
+}
+
 nav {
   display: grid;
   grid-template-columns: 300px 1fr 300px;
   justify-content: space-between;
   height: 100%;
   padding: 1rem 3rem;
+  box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.3);
   box-sizing: border-box;
+  transition-duration: 0.3s;
 }
-#links, #userSpecific {
+#links,
+#userSpecific {
   display: flex;
 }
 anibere-logo {
@@ -18,15 +33,16 @@ anibere-logo {
   align-content: center;
 }
 .link * {
-  padding: .8rem;
-  transition: color 150ms;
+  padding: 0.8rem;
+  transition-duration: 0.2s;
 }
 .link:hover *:not(.link.active *) {
   color: white;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0.5px 0.5px 2px black;
 }
 .link.active * {
-  color: red;
+  color: var(--pink);
+  text-shadow: 0.5px 0.5px 2px black;
   cursor: default;
 }
 #userSpecific {

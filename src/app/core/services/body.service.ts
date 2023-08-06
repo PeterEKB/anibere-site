@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Scroll } from '../models/scroll';
+import { Scroll } from '../../shared/interfaces/scroll';
 @Injectable({
   providedIn: 'root',
 })

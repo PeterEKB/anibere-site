@@ -1,0 +1,17 @@
+<div id="cardCon" routerLink="store">
+  <div id="productImgCon">
+    <div id="productImg">
+      <div class="img"><img src="/assets/images/fridayLook.jpg" alt="" class="primaryImage" /></div>
+      <div class="img"><img src="/assets/images/saturdayLook.jpg" alt="" class="secondaryImage" /></div>
+    </div>
+  </div>
+
+  <div id="details">
+    <div id="category">Product Category</div>
+    <div id="title">Title</div>
+    <div id="price">
+      <div id="salePrice">{{ 5.5 | cashFormat }}</div>
+      <div id="fullPrice">{{ 10 | cashFormat }}</div>
+    </div>
+  </div>
+</div>

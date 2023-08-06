@@ -1,4 +1,18 @@
 :host {
   display: block;
   background-color: var(--neutral-gray);
+  padding-bottom: 20px;
+}
+#tmpTextCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#tempText {
+  text-shadow: .5px .5px 2px black;
+  color: white;
+  font-size: 10rem;
+  font-weight: 900;
 }

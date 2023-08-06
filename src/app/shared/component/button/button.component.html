@@ -1,7 +1,12 @@
-<a class="link" [routerLink]="metaData.route||route" routerLinkActive="active">
-<div id="buttonType" [class]="metaData.type">
+<a
+  class="link"
+  [routerLink]="metaData.route || route"
+>
+  <div id="buttonType" [class]="metaData.type">
     <div id="iconLeft" class="icon" [class.disable]=""></div>
-    <ng-content></ng-content>
+    <span id="buttonContent">
+      <ng-content></ng-content>
+    </span>
     <div id="iconRight" class="icon" [class.disable]=""></div>
   </div>
 </a>

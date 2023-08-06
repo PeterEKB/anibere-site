@@ -1,7 +1,25 @@
 <div setbg>
   <app-home-banner></app-home-banner>
 </div>
-<div setbg="half" reveal="all">
+<div id="newReleasesCon" setbg="half">
+  <app-product-carousel
+  id="newReleases"
+  [number]="numberOfProductsVisible"
+  ></app-product-carousel>
 </div>
-<div setbg="half" reveal="all">
+<div id="newReleasesCon" setbg="half">
+  <div id="leafCardCon">
+    <div id="leafCard1" class="leafCards">
+      <div class="leafBg"></div>
+      <div class="leafText">Wigs</div>
+    </div>
+    <div id="leafCard2" class="leafCards">
+      <div class="leafBg"></div>
+      <div class="leafText"></div>
+    </div>
+    <div id="leafCard3" class="leafCards">
+      <div class="leafBg"></div>
+      <div class="leafText"></div>
+    </div>
+  </div>
 </div>

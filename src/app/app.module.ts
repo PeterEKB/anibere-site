@@ -9,6 +9,7 @@ import { ContentComponent } from './core/components/content/content.component';
 import { TemplateComponent } from './core/components/template/template.component';
 import { BodyComponent } from './core/components/body/body.component';
 import { LogoComponent } from './core/components/logo/logo.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { LogoComponent } from './core/components/logo/logo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

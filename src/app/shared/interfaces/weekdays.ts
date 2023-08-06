@@ -9,7 +9,9 @@ export interface Weekdays {
 }
 export interface WeekDay {
   day: string;
-  name: Name;
+  route?: string;
+  img?: string;
+  name?: Name;
 }
 export interface Name {
   male: string;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Scroll } from '../../models/scroll';
+import { Scroll } from '../../../shared/interfaces/scroll';
 import { BodyService } from '../../services/body.service';
 
 @Component({

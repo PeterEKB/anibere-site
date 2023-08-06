@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+:host ::-webkit-scrollbar {
+  height: 0.3rem;
+}
+#carouselCon {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+#productCardCon {
+  display: flex;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+}
+.products {
+  width: auto;
+  margin: 1rem;
+  scroll-snap-align: start;
+}
+.arrows {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  aspect-ratio: 0.5;
+  width: 2rem;
+  background-color: white;
+  box-shadow: 0 0 4px 1px hsla(0, 0%, 0%,.3);
+  transition: opacity 0;
+  z-index: 5;
+}
+#prev {
+  left: .5rem;
+}
+#next {
+  left: unset;
+  right: .5rem;
+}
+.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+:host:hover {
+  .arrows:not(.disabled) {
+    opacity: 1;
+    transition: opacity 0.3s 0.1s;
+  }
+
+  ::-webkit-scrollbar {
+    height: 0.7rem;
+    cursor: pointer;
+  }
+}

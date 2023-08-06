@@ -1,23 +1,317 @@
 <div class="videoCon">
-  <video autoplay muted loop oncanplay="this.play()" onloadedmetadata="this.muted = true">
-    <source src="assets/videos/BannerHairFlip.mp4" type="video/mp4">
+  <video
+    autoplay
+    muted
+    loop
+    oncanplay="this.play()"
+    onloadedmetadata="this.muted = true"
+  >
+    <!-- <source src="assets/videos/BannerHairFlip.mp4" type="video/mp4" /> -->
   </video>
   <div class="videoOverlay"></div>
 </div>
-<div id="banner-Welcome" class="banner-Bg-Text ace--center"><b>|</b>Welcome</div>
+<div id="banner-Welcome" class="banner-Bg-Text ace--center">
+  <b>|</b>Welcome
+</div>
 <div id="banner-Akwaaba" class="banner-Bg-Text ace--center">Akwaaba</div>
 <div id="foreground">
-  <app-button id="bAA" [metaData]=cTAData class="ace--center">{{'book an appointment'|titlecase}}</app-button>
-  <div id="bookTheLookCon" class="ace--center" reveal>
+  <app-button id="bAA" [metaData]="cTAData" class="ace--center">{{
+    "book an appointment" | titlecase
+  }}</app-button>
+  <div id="bookTheLookCon" class="ace--center">
     <a class="link" routerLink="store" routerLinkActive="active">
       <div id="bookTheLookText">
-        <h1>book the look</h1>
+        <h1>Get the look</h1>
       </div>
     </a>
     <div id="miniCalendar">
       <ng-container *ngFor="let day of weekdaysArray">
-        <app-card></app-card>
+        <app-card
+          [metaData]="{
+            route: day.route,
+            img: day.img,
+            textArea: {
+              first: day.day,
+              second: day.name[gender]
+            }
+          }"
+        ></app-card>
       </ng-container>
+    </div>
+  </div>
+  <div id="tagline" class="ace--center">
+    <div id="quote">"beautiful inside and out"</div>
+    <div id="treSwatch">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="66.427"
+        height="25"
+        viewBox="0 0 66.427 25"
+      >
+        <defs>
+          <filter
+            id="Ellipse_5"
+            x="41.427"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="-1" dy="-1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur"></feGaussianBlur>
+            <feFlood flood-color="#030303"></feFlood>
+            <feComposite operator="in" in2="blur"></feComposite>
+          </filter>
+          <filter
+            id="Ellipse_5-2"
+            x="41.427"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="1" dy="1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur-2"></feGaussianBlur>
+            <feFlood flood-opacity="0.31" result="color"></feFlood>
+            <feComposite
+              operator="out"
+              in="SourceGraphic"
+              in2="blur-2"
+            ></feComposite>
+            <feComposite operator="in" in="color"></feComposite>
+            <feComposite operator="in" in2="SourceGraphic"></feComposite>
+          </filter>
+          <filter
+            id="Ellipse_6"
+            x="20.62"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="-1" dy="-1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur-3"></feGaussianBlur>
+            <feFlood flood-color="#030303"></feFlood>
+            <feComposite operator="in" in2="blur-3"></feComposite>
+          </filter>
+          <filter
+            id="Ellipse_6-2"
+            x="20.62"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="1" dy="1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur-4"></feGaussianBlur>
+            <feFlood flood-opacity="0.31" result="color-2"></feFlood>
+            <feComposite
+              operator="out"
+              in="SourceGraphic"
+              in2="blur-4"
+            ></feComposite>
+            <feComposite operator="in" in="color-2"></feComposite>
+            <feComposite operator="in" in2="SourceGraphic"></feComposite>
+          </filter>
+          <filter
+            id="Ellipse_7"
+            x="0"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="-1" dy="-1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur-5"></feGaussianBlur>
+            <feFlood flood-color="#030303"></feFlood>
+            <feComposite operator="in" in2="blur-5"></feComposite>
+          </filter>
+          <filter
+            id="Ellipse_7-2"
+            x="0"
+            y="0"
+            width="25"
+            height="25"
+            filterUnits="userSpaceOnUse"
+          >
+            <feOffset dx="1" dy="1" input="SourceAlpha"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" result="blur-6"></feGaussianBlur>
+            <feFlood flood-opacity="0.31" result="color-3"></feFlood>
+            <feComposite
+              operator="out"
+              in="SourceGraphic"
+              in2="blur-6"
+            ></feComposite>
+            <feComposite operator="in" in="color-3"></feComposite>
+            <feComposite operator="in" in2="SourceGraphic"></feComposite>
+          </filter>
+        </defs>
+        <g id="Logo_3" data-name="Logo 3" transform="translate(-6.5 -70.74)">
+          <g data-type="innerShadowGroup">
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_5)"
+            >
+              <circle
+                id="Ellipse_5-3"
+                data-name="Ellipse 5"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(47.43 6)"
+                fill="#df1c48"
+                stroke="rgba(35,31,32,0.1)"
+                stroke-miterlimit="10"
+                stroke-width="1"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_5-4"
+              data-name="Ellipse 5"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(53.927 76.74)"
+              fill="#df1c48"
+            ></circle>
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_5-2)"
+            >
+              <circle
+                id="Ellipse_5-5"
+                data-name="Ellipse 5"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(47.43 6)"
+                fill="#fff"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_5-6"
+              data-name="Ellipse 5"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(53.927 76.74)"
+              fill="none"
+              stroke="rgba(35,31,32,0.1)"
+              stroke-miterlimit="10"
+              stroke-width="1"
+            ></circle>
+          </g>
+          <g data-type="innerShadowGroup">
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_6)"
+            >
+              <circle
+                id="Ellipse_6-3"
+                data-name="Ellipse 6"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(26.62 6)"
+                fill="#fff100"
+                stroke="rgba(35,31,32,0.1)"
+                stroke-miterlimit="10"
+                stroke-width="1"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_6-4"
+              data-name="Ellipse 6"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(33.12 76.74)"
+              fill="#fff100"
+            ></circle>
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_6-2)"
+            >
+              <circle
+                id="Ellipse_6-5"
+                data-name="Ellipse 6"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(26.62 6)"
+                fill="#fff"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_6-6"
+              data-name="Ellipse 6"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(33.12 76.74)"
+              fill="none"
+              stroke="rgba(35,31,32,0.1)"
+              stroke-miterlimit="10"
+              stroke-width="1"
+            ></circle>
+          </g>
+          <g data-type="innerShadowGroup">
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_7)"
+            >
+              <circle
+                id="Ellipse_7-3"
+                data-name="Ellipse 7"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(6 6)"
+                fill="#ec81b3"
+                stroke="rgba(35,31,32,0.1)"
+                stroke-miterlimit="10"
+                stroke-width="1"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_7-4"
+              data-name="Ellipse 7"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(12.5 76.74)"
+              fill="#ec81b3"
+            ></circle>
+            <g
+              transform="matrix(1, 0, 0, 1, 6.5, 70.74)"
+              filter="url(#Ellipse_7-2)"
+            >
+              <circle
+                id="Ellipse_7-5"
+                data-name="Ellipse 7"
+                cx="7.5"
+                cy="7.5"
+                r="7.5"
+                transform="translate(6 6)"
+                fill="#fff"
+              ></circle>
+            </g>
+            <circle
+              id="Ellipse_7-6"
+              data-name="Ellipse 7"
+              cx="7.5"
+              cy="7.5"
+              r="7.5"
+              transform="translate(12.5 76.74)"
+              fill="none"
+              stroke="rgba(35,31,32,0.1)"
+              stroke-miterlimit="10"
+              stroke-width="1"
+            ></circle>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
 </div>

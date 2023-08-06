@@ -1,5 +1,9 @@
-
-<div class="ace--center">
-<a class="link" routerLink="store" routerLinkActive="active">
-  <h4>Store</h4>
-</a></div>
+<a id="link" [routerLink]="route || metaData.route" routerLinkActive="active">
+  <div id="image" class="ace--center">
+    <img [src]="img || metaData.img" [alt]="metaData.alt" />
+  </div>
+  <div id="textArea" class="ace--center">
+    <h4 id="primaryText" class="ace--center">{{metaData.textArea?.first | titlecase}}</h4>
+    <h4 id="secondaryText" class="ace--center">{{metaData.textArea?.second | titlecase}}</h4>
+  </div>
+</a>

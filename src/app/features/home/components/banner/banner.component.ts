@@ -1,7 +1,7 @@
 import { WeekDay } from '@angular/common';
 import { Component } from '@angular/core';
-import { ButtonMetaData } from 'src/app/core/models/button-meta-data';
-import { Weekdays } from 'src/app/core/models/weekdays';
+import { ButtonMetaData } from 'src/app/shared/interfaces/button-meta-data';
+import { Weekdays } from 'src/app/shared/interfaces/weekdays';
 
 @Component({
   selector: 'app-home-banner',
@@ -11,56 +11,65 @@ import { Weekdays } from 'src/app/core/models/weekdays';
 export class BannerComponent {
   cTAData: ButtonMetaData = {
     type: 'rounded',
-    route: 'store',
+    route: 'booking',
   }
+  gender: string = 'female';
   weekdays: Weekdays = {
     sunday: {
       day: 'sunday',
+      route: 'store',
+      img: '/assets/images/sundayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Esi',
       },
     },
     monday: {
       day: 'monday',
+      img: '/assets/images/mondayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Adwoa',
       },
     },
     tuesday: {
       day: 'tuesday',
+      img: '/assets/images/tuesdayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Abena',
       },
     },
     wednesday: {
       day: 'wednesday',
+      img: '/assets/images/wednesdayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Ekua',
       },
     },
     thursday: {
       day: 'thursday',
+      img: '/assets/images/thursdayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Aba/Ya',
       },
     },
     friday: {
       day: 'friday',
+      img: '/assets/images/fridayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Efua',
       },
     },
     saturday: {
       day: 'saturday',
+      img: '/assets/images/saturdayLook.jpg',
       name: {
         male: 'afua',
-        female: 'fdasf',
+        female: 'Ama',
       },
     },
   };
