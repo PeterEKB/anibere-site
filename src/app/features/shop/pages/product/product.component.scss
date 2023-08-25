@@ -19,6 +19,7 @@
 }
 #right {
   padding: 2rem 3rem 3rem;
+  width: clamp(350px, 35%, 500px);
   // top: calc(var(--nav-height) / 2);
   // margin: 0 0 calc(var(--nav-height) / 2) calc(var(--nav-height) / 2);
   // height: calc(100vh - var(--nav-height) * 2);
@@ -33,7 +34,6 @@
   gap: 3rem;
   top: 0;
   height: fit-content;
-  width: clamp(350px, 35%, 500px);
 }
 #sidebarHead {
   display: flex;
