@@ -17,8 +17,8 @@ export class BannerComponent {
   weekdays: Weekdays = {
     sunday: {
       day: 'sunday',
-      route: 'store',
-      img: '/assets/images/sundayLook.jpg',
+      route: 'shop',
+      img: 'assets/images/sundayLook.jpg',
       name: {
         male: 'afua',
         female: 'Esi',
@@ -26,7 +26,7 @@ export class BannerComponent {
     },
     monday: {
       day: 'monday',
-      img: '/assets/images/mondayLook.jpg',
+      img: 'assets/images/mondayLook.jpg',
       name: {
         male: 'afua',
         female: 'Adwoa',
@@ -34,7 +34,7 @@ export class BannerComponent {
     },
     tuesday: {
       day: 'tuesday',
-      img: '/assets/images/tuesdayLook.jpg',
+      img: 'assets/images/tuesdayLook.jpg',
       name: {
         male: 'afua',
         female: 'Abena',
@@ -42,7 +42,7 @@ export class BannerComponent {
     },
     wednesday: {
       day: 'wednesday',
-      img: '/assets/images/wednesdayLook.jpg',
+      img: 'assets/images/wednesdayLook.jpg',
       name: {
         male: 'afua',
         female: 'Ekua',
@@ -50,7 +50,7 @@ export class BannerComponent {
     },
     thursday: {
       day: 'thursday',
-      img: '/assets/images/thursdayLook.jpg',
+      img: 'assets/images/thursdayLook.jpg',
       name: {
         male: 'afua',
         female: 'Aba/Ya',
@@ -58,7 +58,7 @@ export class BannerComponent {
     },
     friday: {
       day: 'friday',
-      img: '/assets/images/fridayLook.jpg',
+      img: 'assets/images/fridayLook.jpg',
       name: {
         male: 'afua',
         female: 'Efua',
@@ -66,7 +66,7 @@ export class BannerComponent {
     },
     saturday: {
       day: 'saturday',
-      img: '/assets/images/saturdayLook.jpg',
+      img: 'assets/images/saturdayLook.jpg',
       name: {
         male: 'afua',
         female: 'Ama',

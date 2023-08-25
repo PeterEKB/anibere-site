@@ -1,0 +1,17 @@
+<div id="cardCon" [routerLink]="route">
+  <div id="productImgCon">
+    <div id="productImg">
+      <div class="img"><img [src]="product.images.list[product.images.primary || 0]" alt="" class="primaryImage" /></div>
+      <div class="img"><img [src]="product.images.list[product.images.secondary || 0]" alt="" class="secondaryImage" /></div>
+    </div>
+  </div>
+
+  <div id="details">
+    <div id="category">{{product.category | titlecase}}</div>
+    <div id="title">{{product.name | titlecase}}</div>
+    <div id="price">
+      <div id="salePrice" *ngIf="product.prices?.discount">{{ product.prices?.discount || '' | cashFormat }}</div>
+      <div id="fullPrice">{{ product.prices?.price || ''| cashFormat }}</div>
+    </div>
+  </div>
+</div>

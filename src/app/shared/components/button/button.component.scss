@@ -1,0 +1,48 @@
+#buttonType {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  min-width: 200px;
+  background: hsla(332, 100%, 80%, 0.5);
+  backdrop-filter: blur(5px);
+  padding: 1rem 40px;
+  border: 2px solid var(--pink-transparency);
+  border-bottom: 0;
+  border-right: 0;
+  box-shadow: 0 1px 2px hsl(0deg 0% 0% / 30%),
+    0 0 5px 1px hsla(0, 0%, 100%, 0.2) inset;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+#buttonType.rounded,
+#buttonType.round {
+  border-radius: 10rem;
+}
+#buttonType.flat {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+#buttonType:hover {
+  background: hsla(332, 70%, 75%, 0.7);
+  border-color: hsla(332, 74%, 100%, 1);
+  box-shadow: 0 2px 3px 1px hsl(0deg 0% 0% / 30%),
+    0 0 5px 1px hsla(0, 0%, 100%, 0.2) inset;
+}
+#buttonType.flat:hover {
+  background: hsla(332, 70%, 75%, 0);
+  box-shadow: 1px 1px 2px 1px hsl(0deg 0% 0% / 30%);
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.disable {
+  opacity: 0;
+}

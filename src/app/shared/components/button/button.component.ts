@@ -9,7 +9,8 @@ import { ButtonMetaData } from 'src/app/shared/interfaces/button-meta-data';
 export class ButtonComponent {
   private _metaData: ButtonMetaData = { route: '' };
 
-  @Input() route: string = '';
+  @Input() route: string | undefined = undefined;
+  @Input() type: string = '';
   @Input('metaData') set metaData(data: ButtonMetaData) {
     this._metaData = { ...this.metaData, ...data };
   }

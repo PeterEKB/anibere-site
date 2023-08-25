@@ -16,10 +16,10 @@ const routes: Routes = [
       import('./features/booking/booking.module').then((m) => m.BookingModule),
   },
   {
-    path: 'store',
-    title: 'Anibere | Store',
+    path: 'shop',
+    title: 'Anibere | Shop',
     loadChildren: () =>
-      import('./features/store/store.module').then((m) => m.StoreModule),
+      import('./features/shop/shop.module').then((m) => m.ShopModule),
   },
   {
     path: 'about',

@@ -1,0 +1,61 @@
+<div id="feed">
+  <a
+    href="https://instagram.com/anibere.beauty"
+    target="_blank"
+    class="instaCardLink"
+    [ngStyle]="{
+  flex: '0 0 calc(100% / ' + this.number + ')',
+  }"
+  >
+    <div
+      id="profileCard"
+      class="instaCard"
+      [ngStyle]="{
+    flex: '0 0 calc(100% / ' + this.number + ')',
+  }"
+    ></div>
+  </a>
+
+  <ng-container *ngFor="let post of posts$ | async">
+    <a
+      [href]="post.permalink"
+      class="instaCardLink"
+      target="_blank"
+      [ngStyle]="{
+      flex: '0 0 calc(100% / ' + this.number + ')',
+    }"
+    >
+      <div
+        class="instaCard"
+        [ngStyle]="{
+          flex: '0 0 calc(100% / ' + this.number + ')',
+        }"
+      >
+        <ng-container
+          *ngIf="
+            ['image', 'carousel_album'].includes(post.media_type.toLowerCase());
+            else video
+          "
+        >
+          <img [src]="post.media_url" class="media" />
+        </ng-container>
+      </div>
+      <ng-template #video>
+        <video
+          [src]="post.media_url"
+          class="media"
+          oncanplay="this.play()"
+          onloadedmetadata="this.muted = true"
+          loop
+          muted
+          autoplay
+        ></video>
+      </ng-template>
+    </a>
+  </ng-container>
+</div>
+<div id="loadMoreCon" (click)="loadMore()">
+  <app-button id="loadMore" type="flat">{{
+    "load more" | titlecase
+  }}</app-button>
+</div>

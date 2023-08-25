@@ -5,14 +5,21 @@ import {
   HostListener,
 } from '@angular/core';
 import {
+  EMPTY,
+  Observable,
   Subject,
   asapScheduler,
   asyncScheduler,
+  concat,
+  concatAll,
+  concatMap,
   filter,
   map,
+  merge,
   switchAll,
   switchMap,
   takeUntil,
+  tap,
 } from 'rxjs';
 import { NavConfigService } from '../../services/nav-config.service';
 import { Scroll } from '../../../shared/interfaces/scroll';
@@ -43,23 +50,36 @@ export class BodyComponent {
     private host: ElementRef
   ) {
     const navigationEnd = router.events.pipe(
-        takeUntil(this.notifier$),
-        filter((e) => e instanceof NavigationEnd)
+        filter((e) => {
+          if (e instanceof NavigationEnd) {
+            this.host.nativeElement.scrollTo({ top: 0 });
+          }
+          return e instanceof NavigationEnd;
+        })
       ),
-      fragmentScroll = navigationEnd.pipe(map((_) => actRoute.fragment));
+      pageReady = s_body.ready$.pipe(
+        filter((value: boolean) => {
+          return value === true;
+        })
+      ),
+      getFragment = actRoute.fragment;
 
-    fragmentScroll.pipe(switchAll()).subscribe((fragment) => {
-      // host.nativeElement.scrollTo({ top: 0 });
-      !!fragment
-        ? asyncScheduler.schedule(
+    navigationEnd
+      .pipe(
+        concatMap((_) => pageReady),
+        concatMap((_) => getFragment)
+      )
+      .subscribe((fragment) => {
+        if (!!fragment) {
+          asyncScheduler.schedule(
             () =>
               host.nativeElement
                 .querySelector(`#${fragment}`)
                 .scrollIntoView({ behavior: 'smooth' }),
             300
-          )
-        : host.nativeElement.scrollTo({ top: 0 });
-    });
+          );
+        }
+      });
 
     s_nav.getStyle$
       .pipe(takeUntil(this.notifier$))

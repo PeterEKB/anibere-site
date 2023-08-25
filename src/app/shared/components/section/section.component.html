@@ -1,0 +1,11 @@
+<div [id]="tag" class="section" attr.setbg="{{ size }}" [class.last]="last">
+  <div id="sectionCon">
+    <h1 id="sectionTitle">{{ title | titlecase }}</h1>
+    <ng-content></ng-content>
+  </div>
+  <div id="sectionButtonCon" *ngIf="button.text">
+    <app-button id="loadMore" type="round" [metaData]="button">{{
+      button.text | titlecase
+    }}</app-button>
+  </div>
+</div>

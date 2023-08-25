@@ -1,0 +1,19 @@
+#view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  overflow: hidden;
+}
+.imgCon {
+  overflow: hidden;
+  margin: 0rem .25rem .5rem;
+  border-radius: .5rem;
+}
+.imgCon img {
+  width: 100%;
+  min-width: 101%;
+  min-height: 101%;
+}
+.imgCon:nth-child(4) {
+  grid-column: 1/span 5;
+}

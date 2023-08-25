@@ -7,7 +7,7 @@ import { NavConfigStyle } from '../../shared/interfaces/nav-config';
 })
 export class NavConfigService {
   private defaultStyling: NavConfigStyle = {
-    backgroundColor: 'var(--light-pink)',
+    backgroundColor: 'white',
     transparent: false,
     overlay: false,
     raise: false,

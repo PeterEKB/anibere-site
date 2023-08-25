@@ -1,0 +1,61 @@
+<div id="view">
+  <div id="left">
+    <app-mosaic [images]="product.images.list"></app-mosaic>
+  </div>
+  <div id="right">
+    <div id="sidebar">
+      <div id="sidebarHead">
+        <div id="productTitle">{{ product.name | titlecase }}</div>
+        <ng-container
+          *ngFor="let description of product.description?.quickDescription"
+        >
+          <div id="qickDescription">{{ description | titlecase }}</div>
+        </ng-container>
+        <div id="price">
+          <div id="salePrice" *ngIf="product.prices?.discount">
+            {{ product.prices?.discount || "" | cashFormat }}
+          </div>
+          <div id="fullPrice">
+            {{ product.prices?.price || "" | cashFormat }}
+          </div>
+        </div>
+      </div>
+      <div id="variantCon" class="containerFormat">
+        <div id="variantHead" class="headFormat">
+          {{
+            variants.length > 1
+              ? variants.length + " color options available"
+              : "Only 1 color option available"
+          }}
+        </div>
+        <div id="variantBody" class="bodyFormat">
+          <ng-container *ngFor="let variant of variants">
+            <div
+              [routerLink]="['/shop/', variant.name | format, variant.sku]"
+              class="variant"
+              [class.current]="variant.sku === product.sku"
+            >
+              <img
+                [src]="variant.images.list[variant.images.primary || '0']"
+                alt=""
+              />
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div id="sizeCon" class="containerFormat">
+        <div id="sizeHead" class="headFormat">
+          select size
+        </div>
+        <div id="sizeBody" class="bodyFormat"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-section heading="You may like" class="borderTop">
+  <app-product-carousel
+    [products]="similarProducts"
+    [number]="4"
+  ></app-product-carousel>
+</app-section>
+<app-section heading="You may also like"></app-section>

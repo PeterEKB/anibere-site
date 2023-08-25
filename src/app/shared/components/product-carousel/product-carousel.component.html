@@ -1,12 +1,14 @@
 <div id="carouselCon">
   <div #container id="productCardCon">
-    <ng-container *ngFor="let view of (products || test); index as index">
+    <ng-container *ngFor="let view of products || test; index as index">
       <app-product-card
         class="products"
         [ngStyle]="{
-          flex: '1 0 calc(100% / ' + this.number + ' - (1rem * 2))',
+          flex: '0 0 calc(100% / ' + this.number + ' - (1rem * 2))',
           width: 'calc(100% / ' + this.number + ' - (1rem * 2))',
         }"
+        [product]="view"
+        [route]="'/shop/' + (view.name | format) + '/' + view.sku"
       ></app-product-card>
     </ng-container>
   </div>

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  width: 100%;
+}
+#sectionCon {
+  width: 70%;
+  margin: auto;
+}
+#sectionTitle {
+  padding: 2rem 5rem;
+  letter-spacing: -.1px;
+}
+.last {
+  padding-bottom: 0;
+}
+#sectionButtonCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5rem 0 0;
+}

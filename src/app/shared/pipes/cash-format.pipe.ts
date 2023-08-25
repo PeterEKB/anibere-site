@@ -4,8 +4,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'cashFormat',
 })
 export class CashFormatPipe implements PipeTransform {
-  transform(value: number | string, soldOut: boolean = true): number | string {
+  transform(
+    value: number | string | null,
+    soldOut: boolean = true
+  ): number | string {
     if (!soldOut) return 'Sold Out';
+
+    if (!value) return '';
 
     if (typeof value === 'string') value = parseFloat(value);
 

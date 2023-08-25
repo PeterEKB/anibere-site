@@ -1,13 +1,19 @@
-<div setbg>
+<div setbg="fluid">
   <app-home-banner></app-home-banner>
 </div>
-<div id="newReleasesCon" setbg="half">
+<app-section size="hug" tag="newReleases" heading="New and limited releases">
   <app-product-carousel
-  id="newReleases"
-  [number]="numberOfProductsVisible"
+    id="newReleases"
+    [number]="numberOfProductsVisible"
+    [products]="products"
   ></app-product-carousel>
-</div>
-<div id="newReleasesCon" setbg="half">
+</app-section>
+<app-section
+  id="visitShop"
+  size="hug"
+  heading="visit the shop"
+  [button]="{ text: 'Shop', direction: 'right', route: 'shop' }"
+>
   <div id="leafCardCon">
     <div id="leafCard1" class="leafCards">
       <div class="leafBg"></div>
@@ -15,11 +21,14 @@
     </div>
     <div id="leafCard2" class="leafCards">
       <div class="leafBg"></div>
-      <div class="leafText"></div>
+      <div class="leafText">lashes</div>
     </div>
     <div id="leafCard3" class="leafCards">
       <div class="leafBg"></div>
-      <div class="leafText"></div>
+      <div class="leafText">accessories</div>
     </div>
   </div>
-</div>
+</app-section>
+<app-section id="feed" title="Looks by you" last>
+  <app-instagram-feed></app-instagram-feed>
+</app-section>

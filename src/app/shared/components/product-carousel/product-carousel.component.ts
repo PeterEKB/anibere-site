@@ -5,8 +5,9 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { asapScheduler, asyncScheduler } from 'rxjs';
+import { Observable, asapScheduler, asyncScheduler, fromEvent } from 'rxjs';
 import { Product } from '../../interfaces/product';
+import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-product-carousel',
@@ -15,7 +16,7 @@ import { Product } from '../../interfaces/product';
 })
 export class ProductCarouselComponent {
   test = Array(20);
-  @Input() products!: Product[];
+  @Input() products: Product[] = [];
   @Input() number: number = 6;
 
   @ViewChild('container')
@@ -25,8 +26,15 @@ export class ProductCarouselComponent {
   @ViewChild('next')
   nextButton!: ElementRef;
 
+  private scroll!: Observable<Event>;
+
+  constructor() {
+  }
+
   ngAfterViewInit() {
     this.nextPrevVisibility();
+    this.scroll = fromEvent(this.container.nativeElement, 'scroll');
+    this.scroll.subscribe(this.nextPrevVisibility);
   }
 
   scrollRight() {

@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { BodyService } from 'src/app/core/services/body.service';
 import { NavConfigService } from 'src/app/core/services/nav-config.service';
+import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
@@ -12,12 +13,18 @@ import { Product } from 'src/app/shared/interfaces/product';
 export class MainComponent implements OnDestroy {
   notifier$: Subject<null> = new Subject();
   numberOfProductsVisible = 4;
+  products: Product[] = [];
 
-  constructor(private s_nav: NavConfigService, private s_body: BodyService) {
+  constructor(
+    private s_nav: NavConfigService,
+    private s_body: BodyService,
+    private readonly s_product: ProductService
+  ) {
     s_nav.setDefaultStyle = {
       transparent: true,
       overlay: true,
     };
+
     s_body.scrollPosition$.pipe(takeUntil(this.notifier$)).subscribe((pos) => {
       if (pos.position.y > 50) {
         if (s_nav.getStyle.transparent) s_nav.makeTransparent(false);
@@ -25,6 +32,8 @@ export class MainComponent implements OnDestroy {
         if (!s_nav.getStyle.transparent) s_nav.makeTransparent(true);
       }
     });
+
+    this.products = this.s_product.getProducts();
   }
 
   ngOnDestroy() {
