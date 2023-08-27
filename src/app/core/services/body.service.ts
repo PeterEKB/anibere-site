@@ -22,6 +22,8 @@ export class BodyService {
   );
   private $_ready: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+  public ready: boolean = false;
+
   public scrollPosition$: Observable<Scroll> = this.$_scrollPosition;
   public ready$: Observable<boolean> = this.$_ready;
 
@@ -32,6 +34,7 @@ export class BodyService {
   constructor() {}
 
   set setReady(ready: boolean) {
-    this.$_ready.next(ready);
+    this.ready = ready;
+    this.$_ready.next(this.ready);
   }
 }

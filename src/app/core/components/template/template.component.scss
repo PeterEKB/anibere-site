@@ -9,6 +9,7 @@
 :host(.loading) {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0s;
 }
 app-nav{
   display: block;

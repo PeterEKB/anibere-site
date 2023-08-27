@@ -1,6 +1,6 @@
 <div id="view">
   <div id="left">
-    <app-mosaic [images]="product.images.list"></app-mosaic>
+    <app-mosaic [images]="product.images!.list"></app-mosaic>
   </div>
   <div id="right">
     <div id="sidebar">
@@ -36,18 +36,42 @@
               [class.current]="variant.sku === product.sku"
             >
               <img
-                [src]="variant.images.list[variant.images.primary || '0']"
+                [src]="variant.images!.list[variant.images!.primary || '0']"
                 alt=""
               />
             </div>
           </ng-container>
         </div>
       </div>
-      <div id="sizeCon" class="containerFormat">
-        <div id="sizeHead" class="headFormat">
-          select size
+      <div id="sizeCon" class="containerFormat" *ngIf="product.sizes">
+        <div id="sizeHead" class="headFormat">select size</div>
+        <div id="sizeBody" class="bodyFormat">
+          <ng-container *ngFor="let size of product.sizes; let i = index">
+            <div
+              class="size"
+              [class.unavailable]="!size.available || size.quantity <= 0"
+              (click)="selectSize(i)"
+              [class.selected]="selectedIndex === i"
+            >
+              {{ size.size | uppercase }}
+            </div>
+          </ng-container>
         </div>
-        <div id="sizeBody" class="bodyFormat"></div>
+      </div>
+      <div id="cta">
+        <app-button id="addBag" class="ctaButton" [class.disabled]="disableAddToCart" type="roundLeft collapse" [disabled]="disableAddToCart">
+          add to bag
+        </app-button>
+
+        <app-button id="addFave" class="ctaButton" type="roundRight collapse">
+          <span id="heart" class="material-symbols-outlined"> favorite </span>
+          <span
+            id="heartSelected"
+            class="material-symbols-outlined ace--center"
+          >
+            favorite
+          </span>
+        </app-button>
       </div>
     </div>
   </div>

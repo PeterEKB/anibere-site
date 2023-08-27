@@ -4,6 +4,7 @@
   align-items: center;
   gap: 2rem;
   min-width: 200px;
+  width: 100%;
   background: hsla(332, 100%, 80%, 0.5);
   backdrop-filter: blur(5px);
   padding: 1rem 40px;
@@ -12,31 +13,53 @@
   border-right: 0;
   box-shadow: 0 1px 2px hsl(0deg 0% 0% / 30%),
     0 0 5px 1px hsla(0, 0%, 100%, 0.2) inset;
-  text-align: center;
-  text-transform: capitalize;
+    text-align: center;
+    text-transform: capitalize;
   font-size: 1.5rem;
+  line-height: 1.2rem;
   font-weight: 700;
   cursor: pointer;
   transition-duration: 0.3s;
 }
+#buttonType[disabled] {
+  filter: grayscale(1);
+  cursor: default;
+}
 #buttonType.rounded,
 #buttonType.round {
   border-radius: 10rem;
+}
+#buttonType.rndL,
+#buttonType.roundedLeft,
+#buttonType.roundLeft {
+  border-radius: 10rem 0 0 10rem;
+}
+#buttonType.rndR,
+#buttonType.roundedRight,
+#buttonType.roundRight {
+  border-radius: 0 10rem 10rem 0;
+}
+#buttonType.collapse {
+  min-width: unset;
+  padding: 1rem 1rem;
+}
+#buttonType.collapse .disable {
+  width: 0;
 }
 #buttonType.flat {
   border: none;
   box-shadow: none;
   background-color: transparent;
 }
-#buttonType:hover {
+#buttonType:hover:not(#buttonType[disabled]) {
   background: hsla(332, 70%, 75%, 0.7);
-  border-color: hsla(332, 74%, 100%, 1);
-  box-shadow: 0 2px 3px 1px hsl(0deg 0% 0% / 30%),
+  border-color: hsla(332, 74%, 100%, .5);
+  box-shadow: 0 1px 2px 1px hsla(0, 0%, 0%, 0.3),
     0 0 5px 1px hsla(0, 0%, 100%, 0.2) inset;
 }
-#buttonType.flat:hover {
+#buttonType.flat:hover:not(#buttonType[disabled]) {
   background: hsla(332, 70%, 75%, 0);
-  box-shadow: 1px 1px 2px 1px hsl(0deg 0% 0% / 30%);
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.3);
 }
 .icon {
   display: flex;

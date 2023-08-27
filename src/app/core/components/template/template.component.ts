@@ -19,7 +19,7 @@ export class TemplateComponent {
     asapScheduler.schedule(() => {
       this.host.nativeElement.classList.remove('loading');
       this.s_body.setReady = true;
-    }, 1000);
+    }, 250);
     this.s_body.scrollPosition$.subscribe((position: Scroll) => {
       if (position.top) {
         this.scrollShape = 'scrollSquareTop';

@@ -6,8 +6,9 @@ export interface Product {
   collection: string;
   category: string;
   description?: ProductDescription;
+  sizes?: Sizes[];
   prices?: ProductPrice;
-  images: ProductImage;
+  images?: ProductImage;
   createdAt: string;
 }
 export interface ProductDescription {
@@ -30,5 +31,10 @@ export interface Colors {
   secondary: string | number;
   tertiary: string | number;
   profile: string | number;
-  list: string[]|number[];
+  list: string[] | number[];
+}
+export interface Sizes {
+  size: string;
+  quantity: number;
+  available: boolean;
 }

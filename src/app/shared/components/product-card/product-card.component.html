@@ -1,8 +1,8 @@
 <div id="cardCon" [routerLink]="route">
   <div id="productImgCon">
     <div id="productImg">
-      <div class="img"><img [src]="product.images.list[product.images.primary || 0]" alt="" class="primaryImage" /></div>
-      <div class="img"><img [src]="product.images.list[product.images.secondary || 0]" alt="" class="secondaryImage" /></div>
+      <div class="img"><img [src]="product.images!.list[product.images!.primary || 0]" alt="" class="primaryImage" /></div>
+      <div class="img"><img [src]="product.images!.list[product.images!.secondary || 0]" alt="" class="secondaryImage" /></div>
     </div>
   </div>
 

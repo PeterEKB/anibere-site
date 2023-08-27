@@ -1,26 +1,32 @@
-<a class="link" [routerLink]="metaData.route || route">
-  <div id="buttonType" [class]="metaData.type || type">
-    <div
-      id="iconLeft"
-      class="icon"
-      [class.disable]="metaData.direction !== 'left'"
-    >
-      <span class="material-symbols-outlined"> west </span>
-    </div>
-    <ng-container *ngIf="metaData.text; else alt">
-      <span id="buttonContent">
-        {{ metaData.text }}
-      </span>
-    </ng-container>
-    <ng-template #alt>
-      <ng-content></ng-content>
-    </ng-template>
-    <div
-      id="iconRight"
-      class="icon"
-      [class.disable]="metaData.direction !== 'right'"
-    >
-      <span class="material-symbols-outlined"> east </span>
-    </div>
+<button
+  id="buttonType"
+  class="link"
+  [class]="metaData.type || type"
+  [disabled]="metaData.disabled || disabled"
+  [routerLink]="metaData.route || route"
+>
+  <div
+    id="iconLeft"
+    class="icon"
+    [class.disable]="metaData.direction !== 'left'"
+  >
+    <span class="material-symbols-outlined"> west </span>
   </div>
-</a>
+  <ng-container *ngIf="metaData.text; else alt">
+    <span id="buttonContent">
+      {{ metaData.text }}
+    </span>
+  </ng-container>
+  <ng-template #alt>
+    <span id="buttonContent">
+      <ng-content></ng-content>
+    </span>
+  </ng-template>
+  <div
+    id="iconRight"
+    class="icon"
+    [class.disable]="metaData.direction !== 'right'"
+  >
+    <span class="material-symbols-outlined"> east </span>
+  </div>
+</button>

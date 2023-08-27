@@ -28,6 +28,33 @@ export class ProductService {
         fullDescription:
           'A full description of the product. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh a odio tincidunt feugiat. Pellentesque vitae nisi at nibh viverra ultricies. Sed in nibh ut urna tincidunt viverra.',
       },
+      sizes: [
+        {
+          size: 'xs',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'S',
+          quantity: 0,
+          available: true,
+        },
+        {
+          size: 'M',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'L',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'xl',
+          quantity: 10,
+          available: true,
+        },
+      ],
       prices: {
         price: 30,
         currency: 'usd',

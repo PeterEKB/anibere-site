@@ -28,6 +28,7 @@ import {
   ActivatedRoute,
   ActivationEnd,
   NavigationEnd,
+  NavigationStart,
   Router,
 } from '@angular/router';
 
@@ -49,10 +50,24 @@ export class BodyComponent {
     private router: Router,
     private host: ElementRef
   ) {
+    s_body.ready$.subscribe((value: boolean) => {
+      if (value === true) {
+        this.host.nativeElement.classList.remove('loading');
+      } else {
+        this.host.nativeElement.classList.add('loading');
+      }
+    });
     const navigationEnd = router.events.pipe(
         filter((e) => {
+          if (e instanceof NavigationStart) {
+            asapScheduler.schedule(() => (s_body.setReady = false), 0);
+          }
+
           if (e instanceof NavigationEnd) {
             this.host.nativeElement.scrollTo({ top: 0 });
+            asapScheduler.schedule(() => {
+              this.s_body.setReady = true;
+            }, 50);
           }
           return e instanceof NavigationEnd;
         })

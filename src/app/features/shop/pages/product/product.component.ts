@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+  Route,
+  Router,
+} from '@angular/router';
 import { asapScheduler, asyncScheduler, concatMap, filter, tap } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
@@ -15,11 +21,13 @@ export class ProductComponent {
   private _title!: string;
   private _collection!: string;
   private _sku!: string;
-  private _variants!: Product[];
+  private _variants: Product[] | null = null;
 
-  public product!: Product;
-  public similarProducts!: Product[];
-  public alsoLike!: Product[];
+  public product: Product = {} as Product;
+  public similarProducts: Product[] = [];
+  public alsoLike: Product[] = [];
+  public selectedIndex: number = -1;
+  public disableAddToCart: boolean = true;
 
   constructor(
     private router: Router,
@@ -30,6 +38,8 @@ export class ProductComponent {
   ) {
     const navEnd = router.events.pipe(
         filter((e) => {
+          if (e instanceof NavigationStart) this.resetVariables();
+
           return e instanceof NavigationEnd;
         })
       ),
@@ -43,7 +53,8 @@ export class ProductComponent {
       this.product = s_products.findProductBySku(this._sku);
       this.similarProducts = s_products
         .getProductsByCollection(this._collection)
-        .concat(s_products.getProductsByCategory(this.product.category)).filter((val)=>val.sku !== this.product.sku);
+        .concat(s_products.getProductsByCategory(this.product.category))
+        .filter((val) => val.sku !== this.product.sku);
       asapScheduler.schedule(() => {
         const formattedName = this.product.name
           .replace(/ /g, '-')
@@ -59,14 +70,41 @@ export class ProductComponent {
     });
   }
 
-  ngOnInit(): void {}
-  ngAfterViewInit() {}
+  ngOnInit(): void {
+    this.selectSize();
+  }
 
   private getVariants() {
     this._variants = this.s_products.getProductsByUnit(this.product.unit!);
     return this._variants;
   }
+  private resetVariables() {
+    // Reset all variables to their initial or default values
+    this._title = '';
+    this._collection = '';
+    this._sku = '';
+    this._variants = null;
+    this.product = {} as Product;
+    this.similarProducts = [];
+    this.alsoLike = [];
+    this.selectedIndex = -1;
+    this.disableAddToCart = true;
+  }
+
   public get variants() {
-    return !!this._variants ? this._variants : this.getVariants();
+    if (!this._variants) {
+      this._variants = this.getVariants(); // Fetch variants and cache the result
+    }
+    return this._variants;
+  }
+  public selectSize(index: number = -1) {
+    if (index !== -1)
+      if (
+        this.product.sizes![index].available &&
+        this.product.sizes![index].quantity > 0
+      ) {
+        this.selectedIndex = this.selectedIndex === index ? -1 : index;
+        this.disableAddToCart = this.selectedIndex === -1;
+      }
   }
 }
