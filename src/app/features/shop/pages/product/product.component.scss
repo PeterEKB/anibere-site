@@ -120,6 +120,7 @@
 }
 #cta {
   display: flex;
+  gap: .5px;
 }
 #addBag {
   flex: 1;
@@ -144,7 +145,7 @@
   background-clip: text;
   transition: color .2s;
 }
-.inCart #heartSelected {
+.inFave #heartSelected {
   display: block;
   color: red;
 }

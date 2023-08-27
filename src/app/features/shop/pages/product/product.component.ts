@@ -11,6 +11,7 @@ import {
 import { asapScheduler, asyncScheduler, concatMap, filter, tap } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
+import { WishListService } from 'src/app/core/services/wish-list.service';
 
 @Component({
   selector: 'app-product',
@@ -34,6 +35,7 @@ export class ProductComponent {
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private s_products: ProductService,
+    private s_wishlist: WishListService,
     private s_title: Title
   ) {
     const navEnd = router.events.pipe(
@@ -79,7 +81,6 @@ export class ProductComponent {
     return this._variants;
   }
   private resetVariables() {
-    // Reset all variables to their initial or default values
     this._title = '';
     this._collection = '';
     this._sku = '';
@@ -106,5 +107,18 @@ export class ProductComponent {
         this.selectedIndex = this.selectedIndex === index ? -1 : index;
         this.disableAddToCart = this.selectedIndex === -1;
       }
+  }
+  handleWishList() {
+    if (this.checkWishList()) this.removeFromWishList();
+    else this.addToWishList();
+  }
+  public addToWishList() {
+    this.s_wishlist.add(this.product);
+  }
+  public removeFromWishList() {
+    this.s_wishlist.remove(this.product);
+  }
+  public checkWishList() {
+    return this.s_wishlist.contains(this.product);
   }
 }

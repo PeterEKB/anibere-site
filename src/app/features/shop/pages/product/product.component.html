@@ -63,7 +63,7 @@
           add to bag
         </app-button>
 
-        <app-button id="addFave" class="ctaButton" type="roundRight collapse">
+        <app-button id="addFave" class="ctaButton" [class.inFave]="checkWishList()" type="roundRight collapse" (click)="handleWishList()">
           <span id="heart" class="material-symbols-outlined"> favorite </span>
           <span
             id="heartSelected"
