@@ -22,7 +22,7 @@ import {
   tap,
 } from 'rxjs';
 import { NavConfigService } from '../../services/nav-config.service';
-import { Scroll } from '../../../shared/interfaces/scroll';
+import { Scroll } from '../../interfaces/scroll';
 import { BodyService } from '../../services/body.service';
 import {
   ActivatedRoute,

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, take, tap } from 'rxjs';
-import { InstagramPost } from 'src/app/shared/interfaces/instagram-post';
+import { InstagramPost } from 'src/app/core/interfaces/instagram-post';
 
 @Injectable({
   providedIn: 'root',

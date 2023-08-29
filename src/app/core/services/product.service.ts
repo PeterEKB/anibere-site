@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/shared/interfaces/product';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Product } from 'src/app/core/interfaces/product';
+import { RecentlyViewed } from '../interfaces/recently-viewed';
+import { WishList } from '../interfaces/wish-list';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private products: Product[] = [
+  private _products: Product[] = [
     {
       id: 0,
       name: 'Cross back sports bra',
       unit: 'CBSSW01',
       sku: 'CBSSW01-001',
       collection: 'Elevate',
-      category: 'Sportswear',
+      category: 'sportswear',
       description: {
         colors: {
           primary: '1',
@@ -73,15 +76,53 @@ export class ProductService {
     },
     {
       id: 1,
-      name: 'Title',
-      collection: 'Elevate',
-      sku: 'sku',
+      name: 'POWER CROPPED ZIP HOODIE',
+      collection: 'Power',
+      unit: 'PCZLS01',
+      sku: 'PCZLS01-002',
       category: 'Lifestyle',
       description: {
-        quickDescription: ['A quick description of the product.'],
+        colors: {
+          primary: '2',
+          secondary: '0',
+          tertiary: '0',
+          profile: '002',
+          list: ['002'],
+        },
+        quickDescription: [
+          'A quick description of the product.',
+          'high support',
+        ],
         fullDescription:
           'A full description of the product. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec nibh a odio tincidunt feugiat. Pellentesque vitae nisi at nibh viverra ultricies. Sed in nibh ut urna tincidunt viverra.',
       },
+      sizes: [
+        {
+          size: 'xs',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'S',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'M',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'L',
+          quantity: 10,
+          available: true,
+        },
+        {
+          size: 'xl',
+          quantity: 10,
+          available: true,
+        },
+      ],
       prices: {
         price: 55,
         currency: 'usd',
@@ -93,16 +134,18 @@ export class ProductService {
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerCropZipHoodieWhiteB3A9X-WBBM.1252.43_3ce54f9d-f72b-4e07-96b1-0647c02ff428.jpg?v=1679945724',
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerCropZipHoodieWhiteB3A9X-WBBM.1259.50_8f7635c8-8aa2-47a6-a95c-55d48ff7304b.jpg?v=1679945724',
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerCropZipHoodieWhiteB3A9X-WBBM.1254.45_b1d8771b-d336-4771-84c5-23d79d449427.jpg?v=1679945724',
+          'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerCropZipHoodieWhiteB3A9X-WBBM.1255.46_f769a590-7f6a-4631-bac3-bd1cfef83664.jpg?v=1679945724',
         ],
       },
       createdAt: '',
     },
     {
       id: 2,
-      name: 'Title',
+      name: 'GS POWER SPORTS BRA',
       collection: 'Elevate',
-      sku: 'sku',
-      category: 'Activewear',
+      unit: 'PSBAW01',
+      sku: 'PSBAW01-003',
+      category: 'sportswear',
       description: {
         quickDescription: ['A quick description of the product.'],
         fullDescription:
@@ -127,10 +170,11 @@ export class ProductService {
     },
     {
       id: 3,
-      name: 'Title',
+      name: 'GS POWER SPORTS BRA',
       collection: 'Elevate',
-      sku: 'sku',
-      category: 'Activewear',
+      unit: 'PSBAW01',
+      sku: 'PSBAW01-004',
+      category: 'sportswear',
       description: {
         quickDescription: ['A quick description of the product.'],
         fullDescription:
@@ -146,7 +190,7 @@ export class ProductService {
         list: [
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerSportsBraIcebergBlueB2A7J-UBZM.1216.7_99f23b7f-48e6-4616-812a-74f617ac6e3f.jpg?v=1679945751',
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerSportsBraIcebergBlueB2A7J-UBZM.1218.9_70f2b54c-b354-4957-bcdf-4cafc4c897d8.jpg?v=1679945751',
-          'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerCropZipHoodieWhiteB3A9X-WBBM.1254.45_b1d8771b-d336-4771-84c5-23d79d449427.jpg?v=1679945724',
+          'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerSportsBraIcebergBlueB2A7J-UBZM.1221.12_9557fdbe-cb52-49d2-aadb-9f54c0182596.jpg?v=1679945751',
           'https://cdn.shopify.com/s/files/1/0156/6146/products/GymsharkPowerSportsBraIcebergBlueB2A7J-UBZM.1222.13_b5b844fd-9ff9-4fa7-8876-932c40fba221.jpg?v=1679945751',
         ],
       },
@@ -158,7 +202,7 @@ export class ProductService {
       collection: 'Elevate',
       unit: 'CBSSW01',
       sku: 'CBSSW01-006A',
-      category: 'Sportswear',
+      category: 'sportswear',
       description: {
         colors: {
           primary: '6A',
@@ -192,10 +236,11 @@ export class ProductService {
     },
     {
       id: 5,
-      name: 'Title',
+      name: 'GS POWER SPORTS BRA',
       collection: 'Elevate',
-      sku: 'sku',
-      category: 'Activewear',
+      unit: 'PSBAW01',
+      sku: 'PSBAW01-002',
+      category: 'sportswear',
       description: {
         quickDescription: ['A quick description of the product.'],
         fullDescription:
@@ -224,7 +269,7 @@ export class ProductService {
       collection: 'Elevate',
       unit: 'CBSSW01',
       sku: 'CBSSW01-002',
-      category: 'Sportswear',
+      category: 'sportswear',
       description: {
         colors: {
           primary: '2',
@@ -260,8 +305,9 @@ export class ProductService {
       id: 7,
       name: 'Elevate Top',
       collection: 'Elevate',
+      unit: 'ELEAW01',
       sku: 'ELEAW01-001',
-      category: 'Activewear',
+      category: 'activewear',
       description: {
         quickDescription: ['A quick description of the product.'],
         fullDescription:
@@ -278,32 +324,96 @@ export class ProductService {
           'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB109_73778b99-c555-459f-99e8-2b4f0ccdd5c4.jpg?v=1692959270',
           'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB111_d0fb62d8-049c-45b1-b5df-5cd0b449e8d2.jpg?v=1692959270',
           'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB110_0659b150-5839-40db-a8a6-ff83cb9a42aa.jpg?v=1692959270',
-          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB114_96923305-db50-4dd6-adbf-47d3e9cb93f3.jpg?v=1692959271'
+          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB114_96923305-db50-4dd6-adbf-47d3e9cb93f3.jpg?v=1692959271',
         ],
       },
       createdAt: '',
     },
   ];
 
+  private _recentlyViewed: Product[] = [];
+  private $recentlyViewed: BehaviorSubject<Product[]> = new BehaviorSubject<
+    Product[]
+  >(this._recentlyViewed);
+  private recentlyViewed$: Observable<Product[]> = this.$recentlyViewed;
+
+  private _wishList: Product[] = [];
+  private $wishList: BehaviorSubject<Product[]> = new BehaviorSubject(
+    this._wishList
+  );
+  private wishList$: Observable<Product[]> = this.$wishList;
+
   constructor() {}
 
   findProductById(id: number): Product {
-    return this.products.find((product) => product.id === id)!;
+    return this._products.find((product) => product.id === id)!;
   }
   findProductBySku(sku: string): Product {
-    return this.products.find((product) => product.sku === sku)!;
+    return this._products.find((product) => product.sku === sku)!;
   }
 
   getProducts(): Product[] {
-    return this.products;
+    return this._products;
   }
   getProductsByCollection(collection: string): Product[] {
-    return this.products.filter((product) => product.collection === collection);
+    return this._products.filter(
+      (product) => product.collection === collection
+    );
   }
   getProductsByCategory(category: string): Product[] {
-    return this.products.filter((product) => product.category === category);
+    return this._products.filter((product) => product.category === category);
   }
   getProductsByUnit(unit: string): Product[] {
-    return this.products.filter((product) => product.unit === unit);
+    return this._products.filter((product) => product.unit === unit);
   }
+
+  public recentlyViewed: RecentlyViewed = {
+    add: (product: Product) => {
+      if (this._recentlyViewed.includes(product)) {
+        this._recentlyViewed.splice(this._recentlyViewed.indexOf(product), 1);
+      }
+      this._recentlyViewed.unshift(product);
+      this.$recentlyViewed.next(this._recentlyViewed);
+    },
+    remove: (product: Product) => {
+      const index = this._recentlyViewed.indexOf(product);
+      if (index > -1) {
+        this._recentlyViewed.splice(index, 1);
+        this.$recentlyViewed.next(this._recentlyViewed);
+      }
+    },
+    clear: () => {
+      this._recentlyViewed = [];
+      this.$recentlyViewed.next(this._recentlyViewed);
+    },
+    get: () => {
+      return this._recentlyViewed;
+    },
+    track: () => this.recentlyViewed$,
+  };
+
+  wishList: WishList = {
+    add: (product: Product) => {
+      this._wishList.push(product);
+      this.$wishList.next(this._wishList);
+    },
+
+    remove: (product: Product) => {
+      this._wishList = this._wishList.filter((p) => p.id !== product.id);
+      this.$wishList.next(this._wishList);
+    },
+
+    getWishList: () => {
+      return this._wishList;
+    },
+
+    contains: (product: Product) => {
+      return this._wishList.some((p) => p.id === product.id);
+    },
+    clear: () => {
+      this._wishList = [];
+      this.$wishList.next(this._wishList);
+    },
+    track: () => this.wishList$,
+  };
 }

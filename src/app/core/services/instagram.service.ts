@@ -9,7 +9,7 @@ import {
   concatAll,
   take,
 } from 'rxjs';
-import { InstagramPost } from 'src/app/shared/interfaces/instagram-post';
+import { InstagramPost } from 'src/app/core/interfaces/instagram-post';
 import { InstagramApiService } from '../api/instagram-api.service';
 
 @Injectable({

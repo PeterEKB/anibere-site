@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InstagramPost } from '../../interfaces/instagram-post';
+import { InstagramPost } from '../../../core/interfaces/instagram-post';
 import { InstagramService } from 'src/app/core/services/instagram.service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 

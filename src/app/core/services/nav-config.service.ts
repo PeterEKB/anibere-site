@@ -1,6 +1,6 @@
 import { AfterViewInit, HostBinding, Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { NavConfigStyle } from '../../shared/interfaces/nav-config';
+import { NavConfigStyle } from '../interfaces/nav-config';
 
 @Injectable({
   providedIn: 'root',

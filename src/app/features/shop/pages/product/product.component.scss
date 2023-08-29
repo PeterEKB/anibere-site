@@ -59,8 +59,17 @@
   line-height: calc(2rem * 1.1);
 }
 #price {
-  font-size: 1.2rem;
-  font-weight: 700;
+  display: flex;
+  gap: 0.5rem;
+}
+#fullPrice {
+  order: -1;
+}
+#salePrice {
+  color: red;
+}
+#salePrice + #fullPrice {
+  text-decoration: line-through;
 }
 #variantBody {
   display: flex;

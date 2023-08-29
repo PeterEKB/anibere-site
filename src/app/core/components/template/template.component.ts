@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { Scroll } from '../../../shared/interfaces/scroll';
+import { Scroll } from '../../interfaces/scroll';
 import { BodyService } from '../../services/body.service';
 import { asapScheduler, asyncScheduler } from 'rxjs';
 

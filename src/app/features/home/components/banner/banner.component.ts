@@ -1,7 +1,7 @@
 import { WeekDay } from '@angular/common';
 import { Component } from '@angular/core';
-import { ButtonMetaData } from 'src/app/shared/interfaces/button-meta-data';
-import { Weekdays } from 'src/app/shared/interfaces/weekdays';
+import { ButtonMetaData } from 'src/app/core/interfaces/button-meta-data';
+import { Weekdays } from 'src/app/core/interfaces/weekdays';
 
 @Component({
   selector: 'app-home-banner',

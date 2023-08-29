@@ -10,8 +10,7 @@ import {
 } from '@angular/router';
 import { asapScheduler, asyncScheduler, concatMap, filter, tap } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
-import { Product } from 'src/app/shared/interfaces/product';
-import { WishListService } from 'src/app/core/services/wish-list.service';
+import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-product',
@@ -27,15 +26,15 @@ export class ProductComponent {
   public product: Product = {} as Product;
   public similarProducts: Product[] = [];
   public alsoLike: Product[] = [];
+  public recentlyViewed: Product[] = [];
+
   public selectedIndex: number = -1;
   public disableAddToCart: boolean = true;
 
   constructor(
     private router: Router,
-    private location: Location,
     private activatedRoute: ActivatedRoute,
     private s_products: ProductService,
-    private s_wishlist: WishListService,
     private s_title: Title
   ) {
     const navEnd = router.events.pipe(
@@ -51,22 +50,40 @@ export class ProductComponent {
           this._sku = val['sku'];
         })
       );
+
     navEnd.pipe(concatMap((_) => params)).subscribe((_) => {
       this.product = s_products.findProductBySku(this._sku);
+      s_products.recentlyViewed.add(this.product);
+
       this.similarProducts = s_products
-        .getProductsByCollection(this._collection)
-        .concat(s_products.getProductsByCategory(this.product.category))
-        .filter((val) => val.sku !== this.product.sku);
+        .getProductsByCategory(this.product.category)
+        .filter((val) => val.unit !== this.product.unit);
+
+      this.alsoLike = s_products
+        .getProducts()
+        .filter((val) => val.unit !== this.product.unit);
+      // this.alsoLike = s_products
+      //   .getProductsByCollection(this._collection)
+      //   .concat(s_products.getProductsByCategory(this.product.category))
+      //   .filter((val) => val.unit !== this.product.unit);
+
+      this.recentlyViewed = s_products.recentlyViewed
+        .get()
+        .filter((val) => val.sku !== this.product.sku)
+        .slice(0, 6);
+
       asapScheduler.schedule(() => {
         const formattedName = this.product.name
           .replace(/ /g, '-')
           .toLowerCase();
+
         if (formattedName !== this._title) {
           console.log(formattedName, this._title);
           this.router.navigate(['/shop', formattedName, this.product.sku], {
             replaceUrl: true,
           });
         }
+
         this.s_title.setTitle(`Anibere ${this.product.name} | Anibere`);
         this.selectSize();
       });
@@ -93,7 +110,7 @@ export class ProductComponent {
 
   public get variants() {
     if (!this._variants) {
-      this._variants = this.getVariants(); // Fetch variants and cache the result
+      this._variants = this.getVariants();
     }
     return this._variants;
   }
@@ -111,17 +128,18 @@ export class ProductComponent {
       this.disableAddToCart = false;
     }
   }
-  handleWishList() {
+
+  public handleWishList() {
     if (this.checkWishList()) this.removeFromWishList();
     else this.addToWishList();
   }
   public addToWishList() {
-    this.s_wishlist.add(this.product);
+    this.s_products.wishList.add(this.product);
   }
   public removeFromWishList() {
-    this.s_wishlist.remove(this.product);
+    this.s_products.wishList.remove(this.product);
   }
   public checkWishList() {
-    return this.s_wishlist.contains(this.product);
+    return this.s_products.wishList.contains(this.product);
   }
 }

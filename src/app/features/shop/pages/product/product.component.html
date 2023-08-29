@@ -88,10 +88,26 @@
     </div>
   </div>
 </div>
-<app-section heading="You may like" class="borderTop" tag="hh">
+<app-section
+  heading="similar products"
+  class="borderTop"
+  tag="hh"
+  *ngIf="similarProducts[0]"
+>
   <app-product-carousel
     [products]="similarProducts"
     [number]="4"
   ></app-product-carousel>
 </app-section>
-<app-section heading="You may also like"></app-section>
+<app-section heading="You may also like" *ngIf="alsoLike[0]">
+  <app-product-carousel
+    [products]="alsoLike"
+    [number]="4"
+  ></app-product-carousel>
+</app-section>
+<app-section heading="recently viewed" *ngIf="recentlyViewed[0]">
+  <app-product-carousel
+    [products]="recentlyViewed"
+    [number]="6"
+  ></app-product-carousel>
+</app-section>

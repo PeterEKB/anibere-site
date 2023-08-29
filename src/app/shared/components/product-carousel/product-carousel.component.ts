@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Observable, asapScheduler, asyncScheduler, fromEvent } from 'rxjs';
-import { Product } from '../../interfaces/product';
+import { Product } from '../../../core/interfaces/product';
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({

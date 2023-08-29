@@ -14,7 +14,7 @@ import {
   merge,
   tap,
 } from 'rxjs';
-import { NavConfigStyle } from '../../../shared/interfaces/nav-config';
+import { NavConfigStyle } from '../../interfaces/nav-config';
 import { NavConfigService } from '../../services/nav-config.service';
 import { BodyService } from '../../services/body.service';
 

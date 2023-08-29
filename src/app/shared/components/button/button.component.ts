@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ButtonMetaData } from 'src/app/shared/interfaces/button-meta-data';
+import { ButtonMetaData } from 'src/app/core/interfaces/button-meta-data';
 
 @Component({
   selector: 'app-button',

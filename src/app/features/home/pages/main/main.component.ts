@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { BodyService } from 'src/app/core/services/body.service';
 import { NavConfigService } from 'src/app/core/services/nav-config.service';
 import { ProductService } from 'src/app/core/services/product.service';
-import { Product } from 'src/app/shared/interfaces/product';
+import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-main',

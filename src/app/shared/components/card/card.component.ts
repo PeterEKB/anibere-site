@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CardMetaData } from 'src/app/shared/interfaces/card-meta-data';
+import { CardMetaData } from 'src/app/core/interfaces/card-meta-data';
 
 @Component({
   selector: 'app-card',
