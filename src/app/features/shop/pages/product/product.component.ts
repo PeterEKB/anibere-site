@@ -68,13 +68,12 @@ export class ProductComponent {
           });
         }
         this.s_title.setTitle(`Anibere ${this.product.name} | Anibere`);
+        this.selectSize();
       });
     });
   }
 
-  ngOnInit(): void {
-    this.selectSize();
-  }
+  ngOnInit(): void {}
 
   private getVariants() {
     this._variants = this.s_products.getProductsByUnit(this.product.unit!);
@@ -99,7 +98,7 @@ export class ProductComponent {
     return this._variants;
   }
   public selectSize(index: number = -1) {
-    if (index !== -1)
+    if (index !== -1) {
       if (
         this.product.sizes![index].available &&
         this.product.sizes![index].quantity > 0
@@ -107,6 +106,10 @@ export class ProductComponent {
         this.selectedIndex = this.selectedIndex === index ? -1 : index;
         this.disableAddToCart = this.selectedIndex === -1;
       }
+    }
+    if ([0, null, undefined].includes(this.product.sizes?.length)) {
+      this.disableAddToCart = false;
+    }
   }
   handleWishList() {
     if (this.checkWishList()) this.removeFromWishList();

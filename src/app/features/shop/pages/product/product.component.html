@@ -59,11 +59,23 @@
         </div>
       </div>
       <div id="cta">
-        <app-button id="addBag" class="ctaButton" [class.disabled]="disableAddToCart" type="roundLeft collapse" [disabled]="disableAddToCart">
+        <app-button
+          id="addBag"
+          class="ctaButton"
+          [class.disabled]="disableAddToCart"
+          type="roundLeft collapse"
+          [disabled]="disableAddToCart"
+        >
           add to bag
         </app-button>
 
-        <app-button id="addFave" class="ctaButton" [class.inFave]="checkWishList()" type="roundRight collapse" (click)="handleWishList()">
+        <app-button
+          id="addFave"
+          class="ctaButton"
+          [class.inFave]="checkWishList()"
+          type="roundRight collapse"
+          (click)="handleWishList()"
+        >
           <span id="heart" class="material-symbols-outlined"> favorite </span>
           <span
             id="heartSelected"
@@ -76,7 +88,7 @@
     </div>
   </div>
 </div>
-<app-section heading="You may like" class="borderTop">
+<app-section heading="You may like" class="borderTop" tag="hh">
   <app-product-carousel
     [products]="similarProducts"
     [number]="4"

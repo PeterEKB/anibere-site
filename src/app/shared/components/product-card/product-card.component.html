@@ -14,4 +14,14 @@
       <div id="fullPrice">{{ product.prices?.price || ''| cashFormat }}</div>
     </div>
   </div>
+
+  <div id="heart" (click)="handleWishList($event)" [class.inFave]="checkWishList()">
+    <span id="heartDefault" class="material-symbols-outlined ace--center"> favorite </span>
+    <span
+      id="heartSelected"
+      class="material-symbols-outlined ace--center"
+    >
+      favorite
+    </span>
+  </div>
 </div>

@@ -2,6 +2,7 @@
   width: 300px;
 }
 #cardCon {
+  position: relative;
   width: 100%;
   padding-bottom: 1rem;
   border-radius: 0.3rem;
@@ -81,4 +82,36 @@
   #productImg img {
     scale: 1;
   }
+}
+
+#heart {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  aspect-ratio: 1;
+  width: 3rem;
+  // background-color: hsla(332, 100%, 90%, 0.5);
+  // border-top: 1.5px solid white;
+  // border-left: 1.5px solid white;
+  // border-radius: 10rem;
+  // box-shadow: 1px 1px 2px hsla(0, 0%, 0%, 0.3);
+}
+#heart:hover #heartDefault {
+  background-color: hsla(332, 100%, 50%, 0.7);
+}
+#heartDefault,
+#heartSelected {
+  font-variation-settings: "opsz" 48, "FILL" 1;
+  font-size: 1.5rem;
+  background-color: hsla(332, 0%, 50%, 0.7);
+  color: transparent;
+  text-shadow: 2px 2px 3px hsla(0, 0%, 100%, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  transition: color 0.2s ease-in-out;
+}
+.inFave #heartSelected {
+  display: block;
+  color: red;
 }

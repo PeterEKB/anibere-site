@@ -9,8 +9,8 @@ export class ProductService {
     {
       id: 0,
       name: 'Cross back sports bra',
-      unit: 'ELESW01',
-      sku: 'ELESW01-001',
+      unit: 'CBSSW01',
+      sku: 'CBSSW01-001',
       collection: 'Elevate',
       category: 'Sportswear',
       description: {
@@ -156,8 +156,8 @@ export class ProductService {
       id: 4,
       name: 'Title',
       collection: 'Elevate',
-      unit: 'ELESW01',
-      sku: 'ELESW01-006A',
+      unit: 'CBSSW01',
+      sku: 'CBSSW01-006A',
       category: 'Sportswear',
       description: {
         colors: {
@@ -222,8 +222,8 @@ export class ProductService {
       id: 6,
       name: 'Cross back sports bra',
       collection: 'Elevate',
-      unit: 'ELESW01',
-      sku: 'ELESW01-002',
+      unit: 'CBSSW01',
+      sku: 'CBSSW01-002',
       category: 'Sportswear',
       description: {
         colors: {
@@ -258,9 +258,9 @@ export class ProductService {
     },
     {
       id: 7,
-      name: 'Title',
+      name: 'Elevate Top',
       collection: 'Elevate',
-      sku: 'sku',
+      sku: 'ELEAW01-001',
       category: 'Activewear',
       description: {
         quickDescription: ['A quick description of the product.'],
@@ -275,10 +275,10 @@ export class ProductService {
         primary: 0,
         secondary: 1,
         list: [
-          'https://cdn.shopify.com/s/files/1/0156/6146/products/ElevateSsTopBlackB4A8A-BBBB109.jpg?v=1677601002',
-          'https://cdn.shopify.com/s/files/1/0156/6146/products/ElevateSsTopBlackB4A8A-BBBB111.jpg?v=1677601002',
-          'https://cdn.shopify.com/s/files/1/0156/6146/products/ElevateSsTopBlackB4A8A-BBBB110.jpg?v=1677601002',
-          'https://cdn.shopify.com/s/files/1/0156/6146/products/ElevateSsTopBlackB4A8A-BBBB114.jpg?v=1677601002',
+          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB109_73778b99-c555-459f-99e8-2b4f0ccdd5c4.jpg?v=1692959270',
+          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB111_d0fb62d8-049c-45b1-b5df-5cd0b449e8d2.jpg?v=1692959270',
+          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB110_0659b150-5839-40db-a8a6-ff83cb9a42aa.jpg?v=1692959270',
+          'https://cdn.shopify.com/s/files/1/0156/6146/files/ElevateSsTopBlackB4A8A-BBBB114_96923305-db50-4dd6-adbf-47d3e9cb93f3.jpg?v=1692959271'
         ],
       },
       createdAt: '',

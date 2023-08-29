@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/product';
+import { WishListService } from 'src/app/core/services/wish-list.service';
 
 @Component({
   selector: 'app-product-card',
@@ -33,4 +34,21 @@ export class ProductCardComponent {
     },
     createdAt: '',
   };
+
+  constructor(private s_wishlist: WishListService) {}
+  handleWishList(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.checkWishList()) this.removeFromWishList();
+    else this.addToWishList();
+  }
+  public addToWishList() {
+    this.s_wishlist.add(this.product);
+  }
+  public removeFromWishList() {
+    this.s_wishlist.remove(this.product);
+  }
+  public checkWishList() {
+    return this.s_wishlist.contains(this.product);
+  }
 }
